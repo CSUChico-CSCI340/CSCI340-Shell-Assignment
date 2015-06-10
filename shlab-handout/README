@@ -7,8 +7,6 @@ Files:
 Makefile	# Compiles your shell program and runs the tests
 README		# This file
 tsh.c		# The shell program that you will write and hand in
-jobs.c		# routines to manipulate a 'jobs' data structure
-helper-routines	# routines that you will use, but do not need to write
 tshref		# The reference shell binary.
 
 # The remaining files are used to test your shell
