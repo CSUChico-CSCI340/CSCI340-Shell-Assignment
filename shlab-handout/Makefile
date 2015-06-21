@@ -1,28 +1,36 @@
 # Makefile for the CS:APP Shell Lab
 
 TEAM = NOBODY
-VERSION = 1
-HANDINDIR = /afs/cs/academic/class/15213-f02/L5/handin
 DRIVER = ./sdriver.pl
 TSH = ./tsh
 TSHREF = ./tshref
 TSHARGS = "-p"
 CC = gcc
-CFLAGS = -Wall -O2
+CXX = g++
+
+##
+## This assignment does not depend on ia32 vs. ia64,
+## so we don't include the -m32 option
+##
+CFLAGS = -Wall -O -g
+CXXFLAGS=$(CFLAGS)
 FILES = $(TSH) ./myspin ./mysplit ./mystop ./myint
 
 all: $(FILES)
 
-##################
-# Handin your work
-##################
-handin:
-	cp tsh.c $(HANDINDIR)/$(TEAM)-$(VERSION)-tsh.c
-
+tsh: tsh.o jobs.o helper-routines.o
+	$(CXX) -o tsh tsh.o jobs.o helper-routines.o
 
 ##################
 # Regression tests
 ##################
+
+tests: tsh test01 test02 test03 test04 test05 test06 test07 test08 test09 test10 test11 test12 test13 test14 test15 test16
+	@echo all time
+
+rtests: tshref rtest01 rtest02 rtest03 rtest04 rtest05 rtest06 rtest07 rtest08 rtest09 rtest10 rtest11 rtest12 rtest13 rtest14 rtest15 rtest16
+	@echo all time
+
 
 # Run tests using the student's shell program
 test01:
@@ -96,5 +104,3 @@ rtest16:
 # clean up
 clean:
 	rm -f $(FILES) *.o *~
-
-
