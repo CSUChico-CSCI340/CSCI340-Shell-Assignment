@@ -19,7 +19,7 @@ FILES = $(TSH) ./myspin ./mysplit ./mystop ./myint
 all: $(FILES)
 
 tsh: tsh.o jobs.o helper-routines.o
-	$(CXX) -o tsh tsh.o jobs.o helper-routines.o
+	$(CC) -o tsh tsh.o jobs.o helper-routines.o
 
 ##################
 # Regression tests
