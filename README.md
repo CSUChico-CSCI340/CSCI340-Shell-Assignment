@@ -16,12 +16,12 @@ I recommend you use a Ubuntu Linux virtual machine to complete this assignment. 
 use jaguar (although this hasn’t been tested) or your native Linux install.
 
 Download this repository as a zip file and then extract it where you would like to store your project files. Alternatively, I'd recommend cloning this repository as a local repository. An example for cloning is below assuming you are in your home directory:
-
+
 <pre>
 ~$ git clone git@github.com:CSUChico-CSCI340/CSCI340-Shell-Assignment.git
 ~$ cd CSCI340-Shell-Assignment/shlab-handout/
 ~$ make
-<pre>
+</pre>
 
 This does the following:
 
