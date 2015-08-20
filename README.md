@@ -223,107 +223,25 @@ For your reference, *tshref.out* gives the output of the reference solution on a
 * The *waitpid, kill, fork, execve, setpgid, and sigprocmask* functions will come in very handy. The WUNTRACED and WNOHANG options to *waitpid* will also be useful.  These are described in detail in the optional text.
 * When you implement your signal handlers, be sure to send *SIGINT* and *SIGTSTP* signals to the entire foreground process group, using ”*-pid*” instead of ”*pid*” in the argument to the kill function. The *sdriver.pl* program tests for this error.
 
-One of the tricky parts of the assignment is deciding on the allocation of work between the
-waitfg
-and
-sigchld
-handler
-functions. I recommend the following approach:
-–
-In
-waitfg
-, use a busy loop around the
-sleep
-function.
-–
-In
-sigchld
-handler
-, use exactly one call to
-waitpid
-.
-While other solutions are possible, such as calling
-waitpid
-in both
-waitfg
-and
-sigchld
-handler
-,
-these can be very confusing. It is simpler to do all reaping in the handler.
+* One of the tricky parts of the assignment is deciding on the allocation of work between the *waitfg* and *sigchld_handler* functions. I recommend the following approach:
+  * In *waitfg*, use a busy loop around the sleep function.
+  * In *sigchld_handler*, use exactly one call to *waitpid*.
+
+While other solutions are possible, such as calling *waitpid* in both *waitfg* and *sigchld_handler*, these can be very confusing. It is simpler to do all reaping in the handler.
 
-In
-eval
-, the parent must use
-sigprocmask
-to block
-SIGCHLD
-signals before it forks the child,
-and then unblock these signals, again using
-sigprocmask
-after it adds the child to the job list by
-calling
-addjob
-. Since children inherit the
-blocked
-vectors of their parents, the child must be sure
-to then unblock
-SIGCHLD
-signals before it execs the new program.
-The parent needs to block the
-SIGCHLD
-signals in this way in order to avoid the race condition where
-the child is reaped by
-sigchld
-handler
-(and thus removed from the job list)
-before
-the parent
-calls
-addjob
-.
-6
+* In *eval*, the parent must use *sigprocmask* to block *SIGCHLD* signals before it forks the child, and then unblock these signals, again using *sigprocmask* after it adds the child to the job list by calling *addjob*. Since children inherit the *blocked* vectors of their parents, the child must be sure to then unblock *SIGCHLD* signals before it execs the new program.
+
+The parent needs to block the *SIGCHLD* signals in this way in order to avoid the race condition where the child is reaped by *sigchld_handler* (and thus removed from the job list) *before* the parent calls *addjob*.
+
 
-Programs such as
-more
-,
-less
-,
-vi
-, and
-emacs
-do strange things with the terminal settings.  Don’t
-run  these  programs  from  your  shell.   Stick  with  simple  text-based  programs  such  as
-/bin/ls
-,
-/bin/ps
-, and
-/bin/echo
-.
+* Programs such as *more*, *less*, *vi*, and *emacs* do strange things with the terminal settings.  Don’t
+run  these  programs  from  your  shell.   Stick  with  simple  text-based  programs  such  as */bin/ls*, */bin/ps*, and */bin/echo*.
 
-When you run your shell from the standard Unix shell, your shell is running in the foreground process
-group.  If your shell then creates a child process, by default that child will also be a member of the
-foreground process group. Since typing
-ctrl-c
-sends a SIGINT to every process in the foreground
-group, typing
-ctrl-c
-will send a SIGINT to your shell, as well as to every process that your shell
-created, which obviously isn’t correct.
-Here  is  the  workaround:  After  the
-fork
-,  but  before  the
-execve
-,  the  child  process  should  call
-setpgid(0, 0)
-, which puts the child in a new process group whose group ID is identical to the
-child’s PID. This ensures that there will be only one process, your shell, in the foreground process
-group.  When you type
-ctrl-c
-, the shell should catch the resulting SIGINT and then forward it
-to the appropriate foreground job (or more precisely, the process group that contains the foreground
-job).
-Evaluation
+* When you run your shell from the standard Unix shell, your shell is running in the foreground process group.  If your shell then creates a child process, by default that child will also be a member of the foreground process group. Since typing *ctrl-c* sends a SIGINT to every process in the foreground group, typing *ctrl-c* will send a SIGINT to your shell, as well as to every process that your shell created, which obviously isn’t correct.
+
+Here  is  the  workaround: After the *fork*, but before the *execve*, the child process should call *setpgid(0, 0)*, which puts the child in a new process group whose group ID is identical to the child’s PID. This ensures that there will be only one process, your shell, in the foreground process group.  When you type *ctrl-c*, the shell should catch the resulting SIGINT and then forward it to the appropriate foreground job (or more precisely, the process group that contains the foreground job).
+
+##Evaluation
 Your solution shell will be tested for correctness on a Linux machine using the same shell driver and trace
 files that were included in your assignment directory.  Your shell should produce
 identical
