@@ -37,7 +37,7 @@ shell. To help you get started, the less interesting functions have already been
 are in helper-routines.c. Your assignment is to complete the remaining empty functions listed
 below. As a sanity check for you, the approximate number of lines of code for each of these functions have
 been listed in the reference solution (which includes lots of comments).
-
+
 * eval: Main routine that parses and interprets the command line. [70 lines]
 * builtin_cmd:  Recognizes and interprets the built-in commands: quit,fg,bg, and jobs. [25 lines]
 * do_bgfg: Implements the bg and fg built-in commands. [50 lines]
@@ -91,7 +91,7 @@ executing its main routine.
 </pre>
 
 the *argc* and *argv* arguments have the following values:
-
+
 * argc == 3,
 * argv[0] == "/bin/ls"
 * argv[1]== "-l"
@@ -107,7 +107,7 @@ tsh> /bin/ls -l -d &
 runs the *ls* program in the background.
 
 Unix shells support the notion of *job control*, which allows users to move jobs back and forth between background and foreground, and to change the process state (running, stopped, or terminated) of the processes in a job. Typing *ctrl-c* causes a SIGINT signal to be delivered to each process in the foreground job. The default action for SIGINT is to terminate the process. Similarly, typing *ctrl-z* causes a SIGTSTP signal to be delivered to each process in the foreground job. The default action for SIGTSTP is to place a process in the stopped state, where it remains until it is awakened by the receipt of a SIGCONT signal. Unix shells also provide various built-in commands that support job control. For example:
-
+
 * jobs: List the running and stopped background jobs.
 * bg <job>: Change a stopped background job to a running background job.
 * fg <job>: Change a stopped or running background job to a running in the foreground.
