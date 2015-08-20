@@ -217,58 +217,11 @@ For your reference, *tshref.out* gives the output of the reference solution on a
 </pre>
 
 ##Hints
-
-Read
-Chapter  8
-of
-Computer  Systems:  A  Programmer’s  Perspective  (2nd  Edition)
-by  Randal  E.
-Bryant, David R. O’Hallaron (You can rent it for the semester for  ̃$20)
-
-Use  the  trace  files  to  guide  the  development  of  your  shell.   Starting  with
-trace01.txt
-,  make
-sure that your shell produces the
-identical
-output as the reference shell.  Then move on to trace file
-trace02.txt
-, and so on.
-
-The
-waitpid
-,
-kill
-,
-fork
-,
-execve
-,
-setpgid
-, and
-sigprocmask
-functions will come in very
-handy.  The WUNTRACED and WNOHANG options to
-waitpid
-will also be useful.  These are
-described in detail in the text.
-
-When you implement your signal handlers, be sure to send
-SIGINT
-and
-SIGTSTP
-signals to the
-en-
-tire
-foreground process group, using ”
--pid
-” instead of ”
-pid
-” in the argument to the
-kill
-function.
-The
-sdriver.pl
-program tests for this error.
+
+* Read **Chapter  8** of *Computer  Systems:  A  Programmer’s  Perspective  (2nd  Edition)* by  Randal  E. Bryant, David R. O’Hallaron (You can rent it for the semester for ~$20)
+* Use  the  trace  files  to  guide  the  development  of  your  shell.   Starting  with *trace01.txt*,  make sure that your shell produces the *identical* output as the reference shell.  Then move on to trace file *trace02.txt*, and so on.
+* The *waitpid, kill, fork, execve, setpgid, and sigprocmask* functions will come in very handy. The WUNTRACED and WNOHANG options to *waitpid* will also be useful.  These are described in detail in the optional text.
+* When you implement your signal handlers, be sure to send *SIGINT* and *SIGTSTP* signals to the entire foreground process group, using ”*-pid*” instead of ”*pid*” in the argument to the kill function. The *sdriver.pl* program tests for this error.
 
 One of the tricky parts of the assignment is deciding on the allocation of work between the
 waitfg
