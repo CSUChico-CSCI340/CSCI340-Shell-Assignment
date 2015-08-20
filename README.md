@@ -116,38 +116,10 @@ Unix shells support the notion of *job control*, which allows users to move jobs
 ##The *tsh* Specification
 
 Your *tsh* shell should have the following features:
-
-The prompt should be the string “
-tsh>
-” (do not include the quotation marks).
-
-The command line typed by the user should consist of a
-name
-and zero or more arguments, all sepa-
-rated by one or more spaces. If
-name
-is a built-in command, then
-tsh
-should handle it immediately
-and wait for the next command line.  Otherwise,
-tsh
-should assume that
-name
-is the path of an
-executable file, which it loads and runs in the context of an initial child process (In this context, the
-term
-job
-refers to this initial child process).
-3
-
-tsh
-need not support pipes (
-|
-) or I/O redirection (
-<
-and
->
-).
+
+* The prompt should be the string "tsh>" (do not include the quotation marks).
+* The command line typed by the user should consist of a *name* and zero or more arguments, all separated by one or more spaces. If *name* is a built-in command, then *tsh* should handle it immediately and wait for the next command line.  Otherwise, *tsh* should assume that *name* is the path of an executable file, which it loads and runs in the context of an initial child process (In this context, the term *job* refers to this initial child process).
+* *tsh* need not support pipes (|) or I/O redirection (< and >).
 
 Typing
 ctrl-c
