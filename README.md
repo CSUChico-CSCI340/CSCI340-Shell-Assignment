@@ -255,6 +255,6 @@ execute using following distribution:
 * 100% - trace 14-16
 
 ##Hand In Instructions
-You should only have to change *tsh.c*. You need to upload *tsh.c* to the [http://turnin.ecst.csuchico.edu/](http://turnin.ecst.csuchico.edu/) page to mark your completion time.
+You should only have to change *tsh.c*. You need to upload *tsh.c* to the [https://turnin.ecst.csuchico.edu/](https://turnin.ecst.csuchico.edu/) page to mark your completion time.
 
 Good luck!
