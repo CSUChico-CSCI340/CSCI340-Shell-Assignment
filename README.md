@@ -1,17 +1,17 @@
 # CSCI340-Shell-Assignment
-##Writing Your Own Unix Shell
+## Writing Your Own Unix Shell
 Adapted from a University of Colorado shell lab assignment that gives students practice with exceptional control flow.
 
 
-##Introduction
+## Introduction
 The purpose of this assignment is to become more familiar with the concepts of process control and signal-
 ing. You’ll do this by writing a simple Unix shell program that supports job control.
 
-##Logistics
+## Logistics
 The only “hand-in” will be electronic. Any clarifications and revisions to the assignment will be posted on
 my web page and emailed out to the class.
 
-##Hand Out Instructions
+## Hand Out Instructions
 I recommend you use a Ubuntu Linux virtual machine to complete this assignment. Alternatively, you can
 use jaguar (although this hasn’t been tested) or your native Linux install.
 
@@ -53,7 +53,7 @@ unix> ./tsh
 tsh> [type commands to your shell here]
 </pre>
 
-##General Overview of Unix Shells
+## General Overview of Unix Shells
 
 A *shell* is an interactive command-line interpreter that runs programs on behalf of the user. A shell repeat-
 edly prints a prompt, waits for a *command line* on *stdin*, and then carries out some action, as directed by
@@ -113,7 +113,7 @@ Unix shells support the notion of *job control*, which allows users to move jobs
 * fg <job>: Change a stopped or running background job to a running in the foreground.
 * kill <job>: Terminate a job.
 
-##The *tsh* Specification
+## The *tsh* Specification
 
 Your *tsh* shell should have the following features:
 
@@ -135,7 +135,7 @@ the foreground. The *<job>* argument can be either a PID or a JID.
 
 * *tsh* should reap all of its zombie children.  If any job terminates because it receives a signal that it didn’t catch, then *tsh* should recognize this event and print a message with the job’s PID and a description of the offending signal.
 
-##Checking Your Work
+## Checking Your Work
 
 I have provided some tools to help you check your work.
 
@@ -216,7 +216,7 @@ For your reference, *tshref.out* gives the output of the reference solution on a
   $
 </pre>
 
-##Hints
+## Hints
 
 * Read **Chapter  8** of *Computer  Systems:  A  Programmer’s  Perspective  (2nd  Edition)* by  Randal  E. Bryant, David R. O’Hallaron (You can rent it for the semester for ~$20)
 * Use  the  trace  files  to  guide  the  development  of  your  shell.   Starting  with *trace01.txt*,  make sure that your shell produces the *identical* output as the reference shell.  Then move on to trace file *trace02.txt*, and so on.
@@ -239,7 +239,7 @@ run  these  programs  from  your  shell.   Stick  with  simple  text-based  prog
 
   * Here  is  the  workaround: After the *fork*, but before the *execve*, the child process should call *setpgid(0, 0)*, which puts the child in a new process group whose group ID is identical to the child’s PID. This ensures that there will be only one process, your shell, in the foreground process group.  When you type *ctrl-c*, the shell should catch the resulting SIGINT and then forward it to the appropriate foreground job (or more precisely, the process group that contains the foreground job).
 
-##Evaluation
+## Evaluation
 
 Your solution shell will be tested for correctness on a Linux machine using the same shell driver and trace files that were included in your assignment directory.  Your shell should produce **identical** output on these traces as the reference shell, with only two exceptions:
 
@@ -255,7 +255,7 @@ execute using following distribution:
 * 90% - traces 11-13
 * 100% - trace 14-16
 
-##Hand In Instructions
+## Hand In Instructions
 You should only have to change *tsh.c*. You need to upload *tsh.c* to the [https://turnin.ecst.csuchico.edu/](https://turnin.ecst.csuchico.edu/) page to mark your completion time.
 
 Good luck!
