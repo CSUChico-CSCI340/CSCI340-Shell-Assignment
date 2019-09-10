@@ -17,11 +17,11 @@ use jaguar (although this hasn’t been tested) or your native Linux install.
 
 Download this repository as a zip file and then extract it where you would like to store your project files. Alternatively, I'd recommend cloning this repository as a local repository. An example for cloning is below assuming you are in your home directory:
 
-<pre>
+```bash
 ~$ git clone git@github.com:CSUChico-CSCI340/CSCI340-Shell-Assignment.git
 ~$ cd CSCI340-Shell-Assignment/shlab-handout/
 ~$ make
-</pre>
+```
 
 This does the following:
 
@@ -48,10 +48,10 @@ been listed in the reference solution (which includes lots of comments).
 
 Each time you modify your *tsh.c* file, type *make* to recompile it. To run your shell, type *tsh* to the command line:
 
-<pre>
+```bash
 unix> ./tsh
 tsh> [type commands to your shell here]
-</pre>
+```
 
 ## General Overview of Unix Shells
 
@@ -73,22 +73,22 @@ line.  Otherwise, the job runs in the *foreground*, which means that the shell w
 
 For example, typing the command line
 
-<pre>
+```bash
 tsh> jobs
-</pre>
+```
 
 causes the shell to execute the built-in *jobs* command. Typing the command line:
 
-<pre>
+```bash
 tsh>/bin/ls -l -d
-</pre>
+```
 
 runs the *ls* program in the foreground. By convention, the shell ensures that when the *ls* program begins
 executing its main routine.
 
-<pre>
+```bash
   int main(int argc, char* argv[])
-</pre>
+```
 
 the *argc* and *argv* arguments have the following values:
 
@@ -100,9 +100,9 @@ the *argc* and *argv* arguments have the following values:
 
 Alternatively, typing the command line
 
-<pre>
+```bash
 tsh> /bin/ls -l -d &
-</pre>
+```
 
 runs the *ls* program in the background.
 
@@ -144,8 +144,8 @@ I have provided some tools to help you check your work.
 
 Use the -h argument to find out the usage of *sdriver.pl*:
 
-<pre>
-  unix> ./sdriver.pl -h
+```bash
+unix> ./sdriver.pl -h
   Usage: sdriver.pl [-hv] -t <trace> -s <shellprog> -a <args>
   Options:
   -h            Print this message
@@ -154,7 +154,7 @@ Use the -h argument to find out the usage of *sdriver.pl*:
   -s <shell>    Shell program to test
   -a <args>     Shell arguments
   -g            Generate output for autograder
-</pre>
+```
 
 I have also provided 16 trace files (*trace{01-16}.txt*) that you will use in conjunction with the shell driver to test the correctness of your shell.  The lower-numbered trace files do very simple tests, and the higher-numbered tests do more complicated tests.
 
@@ -165,24 +165,24 @@ You can run the shell driver on your shell using trace file *trace01.txt* (for i
 
 (the *-a "-p"* argument tells your shell not to emit a prompt), or
 
-<pre>
+```bash
 $ make test01
-</pre>
+```
 
 Similarly, to compare your result with the reference shell, you can run the trace driver on the reference shell by typing:
 
-<pre>
+```bash
 $ ./sdriver.pl -t trace01.txt -s ./tshref -a "-p"
-</pre>
+```
 
 or
-<pre>
+```bash
 $ make rtest01
-</pre>
+```
 
 For your reference, *tshref.out* gives the output of the reference solution on all races.  This might be more convenient for you than manually running the shell driver on all trace files. The neat thing about the trace files is that they generate the same output you would have gotten had you run your shell interactively (except for an initial comment that identifies the trace). For example:
 
-<pre>
+```bash
   $ make test15
   ./sdriver.pl -t trace15.txt -s ./tsh -a "-p"
   #
@@ -214,7 +214,7 @@ For your reference, *tshref.out* gives the output of the reference solution on a
   tsh> fg %1
   tsh> quit
   $
-</pre>
+```
 
 ## Hints
 
