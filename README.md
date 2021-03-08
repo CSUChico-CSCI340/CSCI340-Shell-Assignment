@@ -159,9 +159,9 @@ unix> ./sdriver.pl -h
 I have also provided 16 trace files (*trace{01-16}.txt*) that you will use in conjunction with the shell driver to test the correctness of your shell.  The lower-numbered trace files do very simple tests, and the higher-numbered tests do more complicated tests.
 
 You can run the shell driver on your shell using trace file *trace01.txt* (for instance) by typing:
-<pre>
+```bash
   $ ./sdriver.pl -t trace01.txt -s ./tsh -a "-p"
-</pre>
+```
 
 (the *-a "-p"* argument tells your shell not to emit a prompt), or
 
