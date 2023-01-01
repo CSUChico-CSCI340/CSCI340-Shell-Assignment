@@ -246,14 +246,13 @@ Your solution shell will be tested for correctness on a Linux machine using the 
 * The PIDs can (and will) be different.
 * The output of the */bin/ps* commands in *trace11.txt*, *trace12.txt*, and *trace13.txt* will be different from run to run.   However,  the running states of any *mysplit* processes in the output of the */bin/ps* command should be identical.
 
-The “correctness” part of your assignment will be computed based on how many of the traces you correctly
-execute using following distribution:
+The “correctness” part of your assignment will be computed based on how many of the traces you correctly execute using following distribution:
 * 10% - traces 1-3
-* 30% - traces 4-5
-* 60% - traces 6-8
-* 80% - traces 9-10
-* 90% - traces 11-13
-* 100% - trace 14-16
+* 30% - traces 4-8
+* 10% - traces 9-10
+* 30% - traces 11-13
+* 10% - trace 14-15
+* 10% - trace 16
 
 ## Hand In Instructions
 You should only have to change *tsh.c*. You need to upload *tsh.c* to the [https://turnin.ecst.csuchico.edu/](https://turnin.ecst.csuchico.edu/) page to mark your completion time.
