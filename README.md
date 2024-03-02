@@ -256,6 +256,6 @@ The “correctness” part of your assignment will be computed based on how many
 * 10% - trace 16
 
 ## Hand In Instructions
-You should only have to change *tsh.c*. You need to upload *tsh.c* to the [https://turnin.ecst.csuchico.edu/](https://turnin.ecst.csuchico.edu/) page to mark your completion time.
+You should only have to change *tsh.c*. You need to upload *tsh.c* to the [https://inginious.csuchico.edu/](https://inginious.csuchico.edu) page to mark your completion time.
 
 Good luck!
