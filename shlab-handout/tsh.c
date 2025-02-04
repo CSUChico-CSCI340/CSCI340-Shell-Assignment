@@ -194,10 +194,7 @@ void do_bgfg(char **argv)
   // the variable 'jobp' is the job pointer
   // for the job ID specified as an argument.
   //
-  // Your actions will depend on the specified command
-  // so we've converted argv[0] to a string (cmd) for
-  // your benefit.
-  //
+
   
 
   return;
